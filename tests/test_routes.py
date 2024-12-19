@@ -153,14 +153,12 @@ class TestAccountService(TestCase):
         test_account = AccountFactory()
         response = self.client.post(BASE_URL, json=test_account.serialize())
         # assert that the resp.status_code is status.HTTP_201_CREATED
-        self.assertEqual(response.status_cd,status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code,status.HTTP_201_CREATED)
 
         # update the account
         new_account = response.get_json()
         new_account["name"] = "Anon Ymous"
-        URL with a json payload of new_account
-
-onse    "''idnew_acocount[]{}/}"{onseode.status_cd
-
-onseanYdEmousAbibnon  Statham        self.assertEqual(update_account["name"],"Schawn")sp.get_json() as updated_account
-        # assert that the updated_account["name"] is whatever you changed it to
+        response = self.client.put(f"{BASE_URL}/{new_account['id']}",json=new_account)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        updated_account = response.get_json()
+        self.assertEqual(updated_account["name"],"Anon Ymous")
