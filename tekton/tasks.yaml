@@ -47,7 +47,7 @@ spec:
         python -m pip install --upgrade pip wheel
         pip install -qr requirements.txt
 
-        echo "***** Running nosetests with: $(param.args)"
+        echo "***** Running nosetests with: $(params.args)"
         nosetests $(params.args)
 ---
 apiVersion: tekton.dev/v1beta1
